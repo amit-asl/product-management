@@ -1,0 +1,49 @@
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: python:3.10
+
+    services:
+      redis:
+        image: redis:7-alpine
+        ports:
+          - 6379:6379
+      postgres:
+        image: postgres:15-alpine
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_DB: aslpm
+          POSTGRES_USER: amit
+          POSTGRES_PASSWORD: 12345
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Create Venv
+        run: python -m venv venv
+        shell: bash
+
+      - name: Activate Venv and Install Pip Packages
+        run: |
+          . venv/bin/activate
+          echo PATH=$PATH >> $GITHUB_ENV
+          pip install -r requirements.txt
+
+      - name: Run App
+        run: uvicorn app.main:app --host 127.0.0.1 --port 5000
+
+      - name: Run Celery
+        run: |
+          celery -A celery_config:celery_app worker --loglevel=info
+          celery -A celery_config:celery_app beat
+      - name: Run Test
+        run: |
+          pytest
