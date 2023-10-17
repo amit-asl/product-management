@@ -1,5 +1,5 @@
 ## ASL Product Management
-Product Management application with the help with celery to automate scheduling jobs.
+Product Management application with the help of celery to automate scheduling jobs.
 
 To run the project:
 
