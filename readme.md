@@ -10,6 +10,9 @@ To run the project:
 **Hit on the `/docs` to test the crud operations**
 
 [Note: Please check if the ports are occupied in the localhost before attempting the above command]
+#### Stopping Running Services
+> sudo service postgresql stop
+> sudo service redis stop
 
 #### Tech Stack:
 * python
