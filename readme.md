@@ -11,8 +11,10 @@ To run the project:
 
 [Note: Please check if the ports are occupied in the localhost before attempting the above command]
 #### Stopping Running Services
-> sudo service postgresql stop
-> sudo service redis stop
+```bash
+sudo service redis stop
+sudo service postgresql stop
+```
 
 #### Tech Stack:
 * python
