@@ -17,7 +17,7 @@ To run the project:
 * postgres
 * redis
 
-#### Dockerfile description
+#### Dockerfile Description
 In the dockerfile there are five services. Two are from celery called celery_beat and celery_worker. Other three are as follows, python web app, postgres and redis. Redis is being the message broker here. Postgres as a the persistent storage is being used in the project. 
 The application runs without any dependency. Celery services depends on other services. Postgres and Redis runs independently as well.
 
