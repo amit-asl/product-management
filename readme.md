@@ -6,7 +6,9 @@ To run the project:
 > sudo docker compose up
 
 *sudo is not needed for windows
+
 **Hit on the `/docs` to test the crud operations**
+
 [Note: Please check if the ports are occupied in the localhost before attempting the above command]
 
 #### Tech Stack:
